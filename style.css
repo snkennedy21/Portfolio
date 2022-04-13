@@ -142,6 +142,7 @@ body {
 
 .hero-title__role {
   font-size: 3rem;
+  transition: transform 1s;
 }
 
 .hero-title-letter {
@@ -153,11 +154,9 @@ body {
 }
 
 @keyframes shake {
-
   15% {
     transform: rotate(-10deg);
   }
-
 
   30% {
     transform: rotate(10deg);
@@ -174,4 +173,45 @@ body {
   80% {
     transform: rotate(0deg);
   }
+}
+
+@keyframes zoomFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInBounce {
+  0% {
+    transform: skewX(20deg) translateX(-100rem);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  75% {
+    transform: skewX(-10deg) translateX(0.4rem);
+  }
+
+  100% {
+    transform: skewX(0) translateX(0);
+  }
+}
+
+.invisible {
+  opacity: 0;
 }
