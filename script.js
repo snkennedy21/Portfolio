@@ -9,8 +9,14 @@ window.addEventListener('load', function () {
   heroTitleLetters.forEach((letter, i) => {
     setTimeout(() => {
       letter.classList.remove('hero-title__name__letter-hidden');
-    }, i * 200);
+    }, i * 150);
   })
+
+  setTimeout(() => {
+    heroTitleRole.classList.remove('invisible');
+    heroTitleRole.classList.remove('translate-left');
+    heroTitleRole.style.animation = 'slideInBounce 0.7s ease'
+  }, 1800);
 
   setTimeout(() => {
     socialNavigation.classList.remove('invisible');
@@ -19,13 +25,7 @@ window.addEventListener('load', function () {
     siteNavigation.classList.remove('invisible');
     siteNavigation.style.animation = 'zoomFadeIn 1s ease'
 
-  }, 3000);
-
-  setTimeout(() => {
-    heroTitleRole.classList.remove('invisible');
-    heroTitleRole.classList.remove('translate-left');
-    heroTitleRole.style.animation = 'slideInBounce 1s ease'
-  }, 2300);
+  }, 2200);
 })
 
 

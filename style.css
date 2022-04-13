@@ -196,7 +196,7 @@ body {
 
 @keyframes slideInBounce {
   0% {
-    transform: skewX(20deg) translateX(-100rem);
+    transform: skewX(30deg) translateX(-100rem);
   }
 
   50% {
