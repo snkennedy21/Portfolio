@@ -6,6 +6,7 @@ window.addEventListener('load', function () {
   const siteNavigation = document.querySelector('.site-navigation');
   const heroTitleRole = document.querySelector('.hero-title__role');
 
+
   heroTitleLetters.forEach((letter, i) => {
     setTimeout(() => {
       letter.classList.remove('hero-title__name__letter-hidden');
@@ -56,3 +57,25 @@ const socialNavigationIconAnimation = function () {
   });
 }
 socialNavigationIconAnimation();
+
+
+
+
+const projectSectionFunction = function () {
+  const projectCardIcons = document.querySelectorAll('.project-card__icons');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    entries.forEach((entry) => {
+      const projectCardWidth = entry.contentRect.width;
+      projectCardIcons.forEach((icon) => {
+        icon.style.width = `${projectCardWidth}px`
+      });
+    });
+  });
+  projectCards.forEach((card) => {
+    resizeObserver.observe(card);
+  });
+
+}
+projectSectionFunction();
