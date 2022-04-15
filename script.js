@@ -59,23 +59,36 @@ const socialNavigationIconAnimation = function () {
 socialNavigationIconAnimation();
 
 
+const portfolioProjectHoverAnimationFunction = function () {
 
-
-const projectSectionFunction = function () {
-  const projectCardIcons = document.querySelectorAll('.project-card__icons');
   const projectCards = document.querySelectorAll('.project-card');
+  const projectCardIcons = document.querySelector('.project-card__icons');
 
-  const resizeObserver = new ResizeObserver((entries) => {
-    entries.forEach((entry) => {
-      const projectCardWidth = entry.contentRect.width;
-      projectCardIcons.forEach((icon) => {
-        icon.style.width = `${projectCardWidth}px`
+  projectCards.forEach((card) => {
+    const projectCardIconContainers = card.querySelectorAll('.project-card__icon-container')
+    const projectCardImageWrap = card.querySelector('.project-card__image-wrap');
+    card.addEventListener('mouseenter', function () {
+      if (projectCardImageWrap.classList.contains('invisible')) {
+        projectCardImageWrap.classList.remove('invisible');
+        projectCardIconContainers.forEach((icon, i) => {
+          setTimeout(() => {
+            icon.style.animation = 'fadeInDown 1s ease';
+          }, i * 200);
+          setTimeout(() => {
+            icon.classList.remove('invisible');
+          }, 400);
+        });
+      }
+    });
+    card.addEventListener('mouseleave', function () {
+      if (!projectCardImageWrap.classList.contains('invisible')) {
+        projectCardImageWrap.classList.add('invisible');
+      }
+      projectCardIconContainers.forEach((icon) => {
+        icon.style.animation = '';
+        icon.classList.add('invisible');
       });
     });
   });
-  projectCards.forEach((card) => {
-    resizeObserver.observe(card);
-  });
-
-}
-projectSectionFunction();
+};
+portfolioProjectHoverAnimationFunction();
