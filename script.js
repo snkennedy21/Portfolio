@@ -60,23 +60,19 @@ socialNavigationIconAnimation();
 
 
 const portfolioProjectHoverAnimationFunction = function () {
-
   const projectCards = document.querySelectorAll('.project-card');
-  const projectCardIcons = document.querySelector('.project-card__icons');
 
   projectCards.forEach((card) => {
+    const projectCardIcons = card.querySelector('.project-card__icons');
     const projectCardIconContainers = card.querySelectorAll('.project-card__icon-container')
     const projectCardImageWrap = card.querySelector('.project-card__image-wrap');
+
+
     card.addEventListener('mouseenter', function () {
       if (projectCardImageWrap.classList.contains('invisible')) {
         projectCardImageWrap.classList.remove('invisible');
         projectCardIconContainers.forEach((icon, i) => {
-          setTimeout(() => {
-            icon.style.animation = 'fadeInDown 1s ease';
-          }, i * 200);
-          setTimeout(() => {
-            icon.classList.remove('invisible');
-          }, 400);
+          icon.style.animation = `fadeInDown 1s ease forwards ${i / 5}s`;
         });
       }
     });
@@ -86,9 +82,32 @@ const portfolioProjectHoverAnimationFunction = function () {
       }
       projectCardIconContainers.forEach((icon) => {
         icon.style.animation = '';
-        icon.classList.add('invisible');
       });
     });
+
+    projectCardIcons.addEventListener('mouseover', function (e) {
+      e.preventDefault;
+      if (e.target.classList.contains('project-card__icon')) {
+        const icon = e.target;
+        icon.style.animation = 'pulse 0.7s infinite ease-in-out alternate'
+      } else if (e.target.classList.contains('project-card__icon-name')) {
+        const icon = e.target.previousElementSibling;
+        icon.style.animation = 'pulse 0.7s infinite ease-in-out alternate'
+      }
+    })
+    projectCardIcons.addEventListener('mouseout', function (e) {
+      e.preventDefault;
+      if (e.target.classList.contains('project-card__icon')) {
+        const icon = e.target;
+        icon.style.animation = '';
+      } else if (e.target.classList.contains('project-card__icon-name')) {
+        const icon = e.target.previousElementSibling;
+        icon.style.animation = '';
+      }
+    })
   });
+
+
+
 };
 portfolioProjectHoverAnimationFunction();
