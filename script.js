@@ -8,16 +8,14 @@ window.addEventListener('load', function () {
 
 
   heroTitleLetters.forEach((letter, i) => {
-    setTimeout(() => {
-      letter.classList.remove('hero-title__name__letter-hidden');
-    }, i * 150);
+    letter.style.animation = `bounceIn 1s ease forwards ${i / 9}s`;
   })
 
   setTimeout(() => {
     heroTitleRole.classList.remove('invisible');
     heroTitleRole.classList.remove('translate-left');
     heroTitleRole.style.animation = 'slideInBounce 0.7s ease'
-  }, 1800);
+  }, 1200);
 
   setTimeout(() => {
     socialNavigation.classList.remove('invisible');
@@ -26,7 +24,7 @@ window.addEventListener('load', function () {
     siteNavigation.classList.remove('invisible');
     siteNavigation.style.animation = 'zoomFadeIn 1s ease'
 
-  }, 2200);
+  }, 1700);
 })
 
 

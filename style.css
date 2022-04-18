@@ -160,6 +160,8 @@ body {
 
 .hero-title-letter {
   transition: all 0.4s;
+  display: inline-block;
+  opacity: 0;
 }
 
 .hero-title__name__letter-hidden {
@@ -382,11 +384,11 @@ body {
   }
 
   65% {
-    transform: scale(0.95);
+    transform: scale(0.98);
   }
 
   80% {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
 
