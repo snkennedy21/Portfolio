@@ -84,30 +84,60 @@ const portfolioProjectHoverAnimationFunction = function () {
         icon.style.animation = '';
       });
     });
-
-    projectCardIcons.addEventListener('mouseover', function (e) {
-      e.preventDefault;
-      if (e.target.classList.contains('project-card__icon')) {
-        const icon = e.target;
-        icon.style.animation = 'pulse 0.7s infinite ease-in-out alternate'
-      } else if (e.target.classList.contains('project-card__icon-name')) {
-        const icon = e.target.previousElementSibling;
-        icon.style.animation = 'pulse 0.7s infinite ease-in-out alternate'
-      }
-    })
-    projectCardIcons.addEventListener('mouseout', function (e) {
-      e.preventDefault;
-      if (e.target.classList.contains('project-card__icon')) {
-        const icon = e.target;
-        icon.style.animation = '';
-      } else if (e.target.classList.contains('project-card__icon-name')) {
-        const icon = e.target.previousElementSibling;
-        icon.style.animation = '';
-      }
-    })
   });
-
-
-
 };
 portfolioProjectHoverAnimationFunction();
+
+
+
+// This function handles revealing letters for section titles
+const letterRevealingFunction = function () {
+  const projectSectionHeadingLetters = document.querySelectorAll('.projects-section-heading__letter');
+
+  const revealLetters = function (entries) {
+    const entry = entries[0];
+    if (!entry.isIntersecting) {} else if (entry.isIntersecting) {
+      projectSectionHeadingLetters.forEach((letter, i) => {
+        letter.style.animation = `bounceIn 1s ease forwards ${i / 8}s`;
+      })
+    }
+  }
+
+  const sectionHeadingObserver = new IntersectionObserver(revealLetters, {
+    root: null,
+    threshold: 0,
+    rootMargin: '-80px'
+  });
+
+  sectionHeadingObserver.observe(projectSectionHeadingLetters[0]);
+}
+letterRevealingFunction();
+
+
+
+
+const sectionRevealingFunction = function () {
+
+  const projectsGrid = document.querySelector('.projects-grid');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectCards.forEach((card) => {
+
+    const revealSection = function (entries) {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        console.log('intersection');
+        card.style.animation = 'fadeInDown 1s ease forwards';
+      }
+    }
+
+    const sectionObserver = new IntersectionObserver(revealSection, {
+      root: null,
+      threshold: 0.3,
+    })
+
+    sectionObserver.observe(card);
+  })
+
+}
+sectionRevealingFunction();
