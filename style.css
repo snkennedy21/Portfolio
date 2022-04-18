@@ -13,7 +13,7 @@
   --light-primary: #fdfdfd;
   --color-primary: #66fcf1;
   --color-primary-dark: #45a29e;
-  --color-secondary: #1f2833;
+  --color-secondary: #FC6671;
   --grey-primary: #c5c6c7;
 }
 
@@ -244,14 +244,31 @@ body {
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  column-gap: 10rem;
+  margin-top: 6rem;
+  row-gap: 13rem;
 }
 
 .project-card {
+  display: grid;
+  grid-template-columns: 1fr;
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
   opacity: 0;
+  gap: 1rem;
+}
+
+.project-card__title {
+  font-size: 3.2rem;
+  color: var(--color-primary);
+  justify-self: center;
+}
+
+.project-card__image-container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .project-card__image {
@@ -304,6 +321,18 @@ body {
 
 .project-card__icon:hover {
   transform: scale(1.2);
+}
+
+.project-card__list-container {
+  justify-self: center;
+}
+
+.project-card__list {
+  display: flex;
+  list-style: none;
+  color: var(--color-primary);
+  gap: 2rem;
+  font-size: 1.8rem;
 }
 
 @keyframes fadeInDown {

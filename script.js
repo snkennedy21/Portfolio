@@ -133,7 +133,7 @@ const sectionRevealingFunction = function () {
 
     const sectionObserver = new IntersectionObserver(revealSection, {
       root: null,
-      threshold: 0.3,
+      threshold: 0.1,
     })
 
     sectionObserver.observe(card);
