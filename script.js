@@ -9,13 +9,14 @@ window.addEventListener('load', function () {
 
   heroTitleLetters.forEach((letter, i) => {
     letter.style.animation = `bounceIn 1s ease forwards ${i / 9}s`;
-  })
+  });
+
 
   setTimeout(() => {
     heroTitleRole.classList.remove('invisible');
     heroTitleRole.classList.remove('translate-left');
     heroTitleRole.style.animation = 'slideInBounce 0.7s ease'
-  }, 1200);
+  }, 1300);
 
   setTimeout(() => {
     socialNavigation.classList.remove('invisible');
@@ -24,7 +25,7 @@ window.addEventListener('load', function () {
     siteNavigation.classList.remove('invisible');
     siteNavigation.style.animation = 'zoomFadeIn 1s ease'
 
-  }, 1700);
+  }, 1800);
 })
 
 
@@ -87,33 +88,6 @@ const portfolioProjectHoverAnimationFunction = function () {
 portfolioProjectHoverAnimationFunction();
 
 
-
-// This function handles revealing letters for section titles
-const letterRevealingFunction = function () {
-  const projectSectionHeadingLetters = document.querySelectorAll('.projects-section-heading__letter');
-
-  const revealLetters = function (entries) {
-    const entry = entries[0];
-    if (!entry.isIntersecting) {} else if (entry.isIntersecting) {
-      projectSectionHeadingLetters.forEach((letter, i) => {
-        letter.style.animation = `bounceIn 1s ease forwards ${i / 8}s`;
-      })
-    }
-  }
-
-  const sectionHeadingObserver = new IntersectionObserver(revealLetters, {
-    root: null,
-    threshold: 0,
-    rootMargin: '-80px'
-  });
-
-  sectionHeadingObserver.observe(projectSectionHeadingLetters[0]);
-}
-letterRevealingFunction();
-
-
-
-
 const sectionRevealingFunction = function () {
 
   const projectsGrid = document.querySelector('.projects-grid');
@@ -124,7 +98,6 @@ const sectionRevealingFunction = function () {
     const revealSection = function (entries) {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log('intersection');
         card.style.animation = 'fadeInDown 1s ease forwards';
       }
     }
@@ -139,3 +112,27 @@ const sectionRevealingFunction = function () {
 
 }
 sectionRevealingFunction();
+
+const letterRevealingFunction = function () {
+  const sectionHeading = document.querySelectorAll('.section-heading');
+
+  sectionHeading.forEach((heading) => {
+    const headingLetters = heading.querySelectorAll('.section-heading__letter');
+    const revealSection = function (entries) {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        headingLetters.forEach((letter, i) => {
+          letter.style.animation = `bounceIn 1s ease forwards ${i / 9}s`;
+        })
+      }
+    }
+
+    const sectionObserver = new IntersectionObserver(revealSection, {
+      root: null,
+      threshold: 0.1,
+    });
+
+    sectionObserver.observe(heading);
+  })
+}
+letterRevealingFunction();

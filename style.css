@@ -237,7 +237,7 @@ body {
 /* Projects Section */
 /* /////////////////////////// */
 
-.projects-section-heading {
+.section-heading {
   font-size: 6rem;
   letter-spacing: 0.1rem;
   color: var(--color-primary);
@@ -359,7 +359,7 @@ body {
   }
 }
 
-.projects-section-heading__letter {
+.section-heading__letter {
   display: inline-block;
   opacity: 0;
 }
